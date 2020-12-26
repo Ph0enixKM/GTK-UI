@@ -101,6 +101,13 @@ UIAttach(grid, img, 0, 0, 0, 0);
 // Numerical values indicate x, y, width, height
 ```
 
+- ### Attaching event callbacks
+
+```c
+UI window = UICreateWindow("Title", options);
+UIEvent(window, "destroyed", qtk_main_quit, NULL);
+```
+
 - ### Load CSS
   
   - From file

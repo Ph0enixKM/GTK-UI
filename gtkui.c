@@ -113,7 +113,7 @@ UI UICreateBox(char orientation) {
 UI UICreateButton(const char* title, void* action) {
     UI button = gtk_button_new_with_mnemonic(title);
     if (action != NULL) {
-        g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(action), NULL);
+        UIEvent(button, "clicked", action, NULL);
     }
     return button;
 }
