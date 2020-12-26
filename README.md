@@ -61,7 +61,20 @@ gcc `pkg-config --cflags gtkui` main.c `pkg-config --libs gtkui`
 ```
 
 ### Install .deb (Ubuntu, Mint, Debian etc.)
-TBD
+Grab newest release from here https://github.com/Ph0enixKM/GTK-UI/releases
+
+Include in the following way:
+
+```c
+#include <gtkui.h>
+```
+
+And compile with:
+
+```bash
+gcc `pkg-config --cflags gtkui` main.c `pkg-config --libs gtkui`
+```
+
 
 ## Documentation
 
