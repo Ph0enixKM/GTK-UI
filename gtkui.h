@@ -18,7 +18,7 @@ typedef struct {
     int border;
 } WindowConfig;
 
-#define UIEvent(instance, signal, handler, ...) g_signal_connect(G_OBJECT(instance), (signal), G_CALLBACK(handler), __VA_ARGS__)
+#define UIEvent(instance, signal, handler, data) g_signal_connect(G_OBJECT(instance), (signal), G_CALLBACK(handler), data)
 UI UICreateWindow(const char* title, const WindowConfig cfg);
 void UILoadCSS(const char* filename);
 void UILoadCSSData(const char* data);
