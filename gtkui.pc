@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: GTK-UI
+Description: GTK-UI Library
+Version: 0.1.0
+Requires: gtk+-3.0 >= 3.0.0
+Libs: -L${libdir} -lgtkui
