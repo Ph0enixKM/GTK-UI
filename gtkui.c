@@ -122,6 +122,24 @@ UI UICreateLabel(const char* text) {
     return gtk_label_new(text);
 }
 
+UI UICreateEntry(const char* placeholder) {
+    UI entry = gtk_entry_new();
+    gtk_entry_set_placeholder_text(GTK_ENTRY(entry), placeholder);
+    return entry;
+}
+
+const char* UIGetEntryValue(UI entry) {
+    return gtk_entry_get_text(GTK_ENTRY(entry));
+}
+
+unsigned UIGetEntryLength(UI entry) {
+    return gtk_entry_get_text_length(GTK_ENTRY(entry));
+}
+
+void UISetEntryValue(UI entry, const char* text) {
+    gtk_entry_set_text(GTK_ENTRY(entry), text);
+}
+
 void UIError(const char* message) {
     UI dialog = gtk_message_dialog_new(
         NULL,

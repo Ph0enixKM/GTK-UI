@@ -112,10 +112,23 @@ UIAppend(window, img);
 
 ```c
 UI grid = UICreateGrid(true); // Homogeneous?
-IAppend(window, grid);
+UIAppend(window, grid);
 // Let's add an image to our grid
-UIAttach(grid, img, 0, 0, 0, 0);
+UIAttach(grid, img, 0, 0, 1, 1);
 // Numerical values indicate x, y, width, height
+```
+
+- ### Creating a entry
+
+```c
+UI entry = UICreateEntry("placeholder");
+UIAppend(window, entry);
+// Setting and getting values
+UISetEntryValue(entry, "some value");
+const char* value = UIGetEntryValue(entry);
+// You can also quickly check the 
+// length in characters of the values
+unsigned length = UIEntryLength(entry);
 ```
 
 - ### Attaching event callbacks
