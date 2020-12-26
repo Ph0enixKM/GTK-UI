@@ -1,5 +1,5 @@
 ifeq ($(PREFIX),)
-    PREFIX := /usr
+	PREFIX := /usr
 endif
 
 all: dirs gtkui.so
@@ -20,5 +20,5 @@ clean:
 
 install:
 	install -m 644 build/gtkui.h $(PREFIX)/include/gtkui.h
-	install -m 644 build/gtkui.so $(PREFIX)/lib/gtkui.h
-	install -m 644 build/gtkui.pc $(PREFIX)/pkgconfig/gtkui.pc
+	install -m 644 build/libgtkui.so $(PREFIX)/lib/libgtkui.so
+	install -m 644 build/gtkui.pc $(PREFIX)/lib/pkgconfig/gtkui.pc
