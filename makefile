@@ -30,9 +30,7 @@ uninstall:
 
 DEB_PATH := build/gtkui_$(GTK_UI_DEB_VERSION)
 build_deb:
-	# test $(GTK_UI_DEB_VERSION)
 	@echo "Building .deb package $${GTK_UI_DEB_VERSION:?Undefined variable GTK_UI_DEB_VERSION}"
-	echo XDDD $(DEB_PATH)
 	mkdir -p $(DEB_PATH)
 	mkdir -p $(DEB_PATH)/DEBIAN
 	mkdir -p $(DEB_PATH)/usr/include
