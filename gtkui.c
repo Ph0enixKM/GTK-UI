@@ -16,6 +16,7 @@ UI UICreateWindow(const char* title, const WindowConfig cfg) {
 }
 
 void UILoadCSS(const char* filename) {
+    const int size = 1024;
     static bool notry = true;
     GtkCssProvider* provider = gtk_css_provider_new();
     GdkDisplay* display = gdk_display_get_default();
