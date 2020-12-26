@@ -27,3 +27,19 @@ uninstall:
 	rm $(PREFIX)/include/gtkui.h
 	rm $(PREFIX)/lib/libgtkui.so
 	rm $(PREFIX)/lib/pkgconfig/gtkui.pc
+
+DEB_PATH := build/gtkui_$(GTK_UI_DEB_VERSION)
+build_deb:
+	# test $(GTK_UI_DEB_VERSION)
+	@echo "Building .deb package $${GTK_UI_DEB_VERSION:?Undefined variable GTK_UI_DEB_VERSION}"
+	echo XDDD $(DEB_PATH)
+	mkdir -p $(DEB_PATH)
+	mkdir -p $(DEB_PATH)/DEBIAN
+	mkdir -p $(DEB_PATH)/usr/include
+	mkdir -p $(DEB_PATH)/usr/lib/pkgconfig
+	sed s/__VERSION__/$(GTK_UI_DEB_VERSION)/ control.template > $(DEB_PATH)/DEBIAN/control
+	cp build/gtkui.h $(DEB_PATH)/usr/include/gtkui.h
+	cp build/libgtkui.so $(DEB_PATH)/usr/lib/libgtkui.so
+	cp build/gtkui.pc $(DEB_PATH)/usr/lib/pkgconfig/gtkui.pc
+	dpkg-deb --build $(DEB_PATH) build
+	mv $(DEB_PATH)_any.deb $(DEB_PATH).deb
