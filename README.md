@@ -115,6 +115,11 @@ UI window = UICreateWindow("Title", (WindowConfig) {
 
 You do not have to show the window - it's set to be **visible** by default - the same thing applies to all components made by GTK-UI
 
+Convenient macro for creating window:
+```c
+UI window = UIWindow("Title", .width = 1020, .height = 720, .exit = true);
+```
+
 - ### Creating a label
 
 ```c
