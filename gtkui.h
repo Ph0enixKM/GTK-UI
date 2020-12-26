@@ -2,11 +2,11 @@
 #define GTKUI
 
 #include <gtk/gtk.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <unistd.h>
 #include <libgen.h>
+#include <stdbool.h>
+#include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 GtkWidget* UICreateWindow(const char* title, const WindowConfig cfg);
 void UILoadCSS(const char* filename);
