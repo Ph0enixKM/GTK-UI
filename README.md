@@ -9,6 +9,10 @@
 ## Table of contents
 
 * [Instalation](#Instalation)
+    * [Manual](#Manual)
+        * [Manual](#Manual)
+        * [Build from sources](#Build-from-sources)
+        * [Install .deb (Ubuntu, Mint, Debian etc.)](#Install-deb-Ubuntu-Mint-Debian-etc)
 * [Documentation](#Documentation)
     * [Hello world](#Hello-world)
     * [Creating a window](#Creating-a-window)
@@ -25,11 +29,39 @@
 
 ## Instalation
 
-In order to install this library - clone this repository (or download in `.zip` format) and then include the header and compile with the source.
+### Manual
+Just grap `gtkui.h` and `gtkui.c` files and put them in your project.
+Include in the following way:
+
+```c
+#include "gtkui.h"
+```
+
+And compile with:
+
+```bash
+gcc `pkg-config --cflags gtk+-3.0` main.c gtkui.c `pkg-config --libs gtk+-3.0`
+```
+
+### Build from sources
+1. Clone this repo
+2. run `make`
+3. run `sudo make install`
+
+Include in the following way:
 
 ```c
 #include <gtkui.h>
 ```
+
+And compile with:
+
+```bash
+gcc `pkg-config --cflags gtkui` main.c `pkg-config --libs gtkui`
+```
+
+### Install .deb (Ubuntu, Mint, Debian etc.)
+TBD
 
 ## Documentation
 
