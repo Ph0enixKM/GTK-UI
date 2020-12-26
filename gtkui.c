@@ -22,8 +22,9 @@ void UILoadCSS(const char* filename) {
     GError* error = 0;
     gtk_css_provider_load_from_file(provider, g_file_new_for_path(filename), &error);
     g_object_unref(provider);
+    #ifndef _WIN32
     if (error && notry) {
-        char result[1024];
+        char result[size];
         ssize_t count = readlink("/proc/self/exe", result, 1024);
         if (count != -1) {
             char* path = dirname(result);
@@ -31,6 +32,21 @@ void UILoadCSS(const char* filename) {
             UILoadCSS(path);
         }
     }
+    #else
+    if (error && notry) {
+        char* path = malloc(size * sizeof(char));
+        memset(path, 0, size);
+        DWORD result = GetModuleFileName(0, path, size - 1);
+        notry = false;
+        if (!result) {
+            free(path);
+            path = 0;
+        }
+        else {
+            UILoadCSS(path);
+        }
+    }
+    #endif
 }
 
 void UILoadCSSData(const char* data) {
