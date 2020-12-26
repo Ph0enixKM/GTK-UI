@@ -1,7 +1,7 @@
 #include <gtkui.h>
 
-GtkWidget* UICreateWindow(const char* title, const WindowConfig cfg) {
-    GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+UI UICreateWindow(const char* title, const WindowConfig cfg) {
+    UI window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(window), title);
     gtk_window_set_default_size(GTK_WINDOW(window), 1020, 720);
     gtk_window_set_resizable (GTK_WINDOW(window), cfg.width);
@@ -47,34 +47,34 @@ void UILoadCSSData(const char* data) {
     g_object_unref (provider);
 }
 
-void UIAppend(GtkWidget* parent, GtkWidget* current) {
+void UIAppend(UI parent, UI current) {
     gtk_container_add(GTK_CONTAINER(parent), current);
     gtk_widget_show(current);
 }
 
-void UISetID(GtkWidget* widget, const char* name) {
+void UISetID(UI widget, const char* name) {
     gtk_widget_set_name(widget, name);
 }
 
-void UIAddClass(GtkWidget* widget, const char* name) {
+void UIAddClass(UI widget, const char* name) {
     GtkStyleContext *ctx;
     ctx = gtk_widget_get_style_context(widget);
     gtk_style_context_add_class(ctx, name);
 }
 
-bool UIHasClass(GtkWidget* widget, const char* name) {
+bool UIHasClass(UI widget, const char* name) {
     GtkStyleContext *ctx;
     ctx = gtk_widget_get_style_context(widget);
     return gtk_style_context_has_class(ctx, name);
 }
 
-void UIRemoveClass(GtkWidget* widget, const char* name) {
+void UIRemoveClass(UI widget, const char* name) {
     GtkStyleContext *ctx;
     ctx = gtk_widget_get_style_context(widget);
     gtk_style_context_remove_class(ctx, name);
 }
 
-GtkWidget* UICreateImage(const char* filename) {
+UI UICreateImage(const char* filename) {
     return gtk_image_new_from_file(filename);
 }
 
@@ -83,23 +83,23 @@ GdkPixbuf* UILoadImageData(const char* filename) {
     return gdk_pixbuf_new_from_file(filename, &err);
 }
 
-GtkWidget* UILoadImage(GdkPixbuf* pixelbuffer) {
+UI UILoadImage(GdkPixbuf* pixelbuffer) {
     return gtk_image_new_from_pixbuf(pixelbuffer);
 }
 
-GtkWidget* UICreateGrid(bool homogeneous) {
-    GtkWidget* grid = gtk_grid_new();
+UI UICreateGrid(bool homogeneous) {
+    UI grid = gtk_grid_new();
     gtk_grid_set_row_homogeneous(GTK_GRID(grid), homogeneous);
     gtk_grid_set_column_homogeneous(GTK_GRID(grid), homogeneous);
     return grid;
 }
 
-void UIAttach(GtkWidget* grid, GtkWidget* child, int x, int y, int width, int height) {
+void UIAttach(UI grid, UI child, int x, int y, int width, int height) {
     gtk_grid_attach(GTK_GRID(grid), child, x, y, width, height);
 }
 
-GtkWidget* UICreateBox(char orientation) {
-    GtkWidget* box = NULL;
+UI UICreateBox(char orientation) {
+    UI box = NULL;
     switch(orientation) {
         case '-':
         box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
@@ -114,18 +114,18 @@ GtkWidget* UICreateBox(char orientation) {
     return box;
 }
 
-GtkWidget* UICreateButton(const char* title, void* action) {
-    GtkWidget* button = gtk_button_new_with_mnemonic(title);
+UI UICreateButton(const char* title, void* action) {
+    UI button = gtk_button_new_with_mnemonic(title);
     if (action != NULL) g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(action), NULL);
     return button;
 }
 
-GtkWidget* UICreateLabel(const char* text) {
+UI UICreateLabel(const char* text) {
     return gtk_label_new(text);
 }
 
 void UIError(const char* message) {
-    GtkWidget* dialog = gtk_message_dialog_new(
+    UI dialog = gtk_message_dialog_new(
         NULL, 
         GTK_DIALOG_MODAL, 
         GTK_MESSAGE_ERROR, 
@@ -138,7 +138,7 @@ void UIError(const char* message) {
 }
 
 void UIWarning(const char* message) {
-    GtkWidget* dialog = gtk_message_dialog_new(
+    UI dialog = gtk_message_dialog_new(
         NULL, 
         GTK_DIALOG_MODAL, 
         GTK_MESSAGE_WARNING, 
@@ -151,7 +151,7 @@ void UIWarning(const char* message) {
 }
 
 void UIPrint(const char* message) {
-    GtkWidget* dialog = gtk_message_dialog_new(
+    UI dialog = gtk_message_dialog_new(
         NULL, 
         GTK_DIALOG_MODAL, 
         GTK_MESSAGE_INFO, 
