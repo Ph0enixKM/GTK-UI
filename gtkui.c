@@ -3,12 +3,15 @@
 UI UICreateWindow(const char* title, const WindowConfig cfg) {
     UI window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(window), title);
-    if (cfg.width == 0 && cfg.width == cfg.height) {
+    if (cfg.width != 0 && cfg.height != 0) {
         gtk_window_set_default_size(GTK_WINDOW(window), cfg.width, cfg.height);
     }
     gtk_window_set_resizable(GTK_WINDOW(window), cfg.resizable);
     if (cfg.center) {
         gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+    }
+    if (cfg.border) {
+        gtk_container_set_border_width(GTK_CONTAINER(window), 30);
     }
     if (cfg.exit) {
         g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
