@@ -6,6 +6,23 @@
 
 **GTK-UI** is a library for creating an easy interfaces in C language using low level GTK library.
 
+## Table of contents
+
+* [Instalation](#Instalation)
+* [Documentation](#Documentation)
+    * [Hello world](#Hello-world)
+    * [Creating a window](#Creating-a-window)
+    * [Creating a label](#Creating-a-label)
+    * [Creating a button](#Creating-a-button)
+    * [Creating a box](#Creating-a-box)
+    * [Creating an image](#Creating-an-image)
+    * [Creating a grid](#Creating-a-grid)
+    * [Attaching event callbacks](#Attaching-event-callbacks)
+    * [Load CSS](#Load-CSS)
+    * [Set CSS ID](#Set-CSS-ID)
+    * [Manipulate with CSS class names](#Manipulate-with-CSS-class-names)
+    * [Message box](-Message-box)
+
 ## Instalation
 
 In order to install this library - clone this repository (or download in `.zip` format) and then include the header and compile with the source.
