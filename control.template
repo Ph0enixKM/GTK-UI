@@ -1,0 +1,5 @@
+Package: gtkui
+Version: __VERSION__
+Architecture: any
+Maintainer: Ph0enixKM & Florian3k
+Description: Top level library for GTK toolkit
