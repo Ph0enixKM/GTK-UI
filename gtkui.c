@@ -11,7 +11,7 @@ UI UICreateWindow(const char* title, const WindowConfig cfg) {
         gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
     }
     if (cfg.border) {
-        gtk_container_set_border_width(GTK_CONTAINER(window), 30);
+        gtk_container_set_border_width(GTK_CONTAINER(window), cfg.border);
     }
     if (cfg.exit) {
         g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
