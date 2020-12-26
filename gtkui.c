@@ -75,7 +75,7 @@ UI UICreateImage(const char* filename) {
 }
 
 GdkPixbuf* UILoadImageData(const char* filename) {
-    GError* err;
+    GError* err = NULL;
     return gdk_pixbuf_new_from_file(filename, &err);
 }
 
