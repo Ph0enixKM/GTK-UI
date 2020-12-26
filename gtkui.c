@@ -8,12 +8,15 @@ UI UICreateWindow(const char* title, const WindowConfig cfg) {
     if (cfg.center) {
         gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
     }
-    g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    if (cfg.exit) {
+        g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    }
     gtk_widget_show(window);
     return window;
 }
 
 void UILoadCSS(const char* filename) {
+    const int size = 1024;
     static bool notry = true;
     GtkCssProvider* provider = gtk_css_provider_new();
     GdkDisplay* display = gdk_display_get_default();
@@ -110,27 +113,20 @@ void UIAttach(UI grid, UI child, int x, int y, int width, int height) {
     gtk_grid_attach(GTK_GRID(grid), child, x, y, width, height);
 }
 
-UI UICreateBox(char orientation) {
-    UI box = NULL;
-    switch (orientation) {
-        case '-':
-            box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-            break;
-        case '|':
-            box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            break;
-        default:
-            box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-            break;
-    }
-    return box;
+UI UICreateHBox(void) {
+    return gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 }
 
-UI UICreateButton(const char* title, void* action) {
+UI UICreateVBox(void) {
+    return gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+}
+
+void UISetBoxSpacing(UI box, int spacing) {
+    gtk_box_set_spacing(GTK_BOX(box), spacing);
+}
+
+UI UICreateButton(const char* title) {
     UI button = gtk_button_new_with_mnemonic(title);
-    if (action != NULL) {
-        UIEvent(button, "clicked", action, NULL);
-    }
     return button;
 }
 

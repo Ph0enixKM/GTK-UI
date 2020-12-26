@@ -104,11 +104,12 @@ int main(int argc, char* argv[]) {
 
 ```c
 UI window = UICreateWindow("Title", (WindowConfig) {
-    .width = 1020,
-    .height = 720,
-    .center = true,
-    .resizable = true,
-    .border = 10
+    .width = 1020,      // Width of the window
+    .height = 720,      // Height of the window
+    .center = true,     // Shall the window be centered?
+    .resizable = true,  // Shall the window be resizable?
+    .border = 10,       // Border size of the window
+    .exit = true        // Shall the program end on exit?
 });
 ```
 
@@ -124,20 +125,18 @@ UIAppend(window, label);
 - ### Creating a button
 
 ```c
-UI button = UICreateButton("Click me!", onclick);
+UI button = UICreateButton("Click me!");
 UIAppend(window, button);
 ```
-
-`onclick` in this example is a pointer to a function that will be invoked once the button is clicked
 
 - ### Creating a box
 
 ```c
-UI boxh = UICreateBox('-'); // Horizontal box
-UI boxv = UICreateBox('|'); // Vertical box
+UI boxh = UICreateVBox(); // Horizontal box
+UI boxv = UICreateHBox(); // Vertical box
+// Set spacing of a box
+UISetBoxSpacing(boxh, 10);
 ```
-
-The orientation describes direction in which children will line up.
 
 - ### Creating an image
 
