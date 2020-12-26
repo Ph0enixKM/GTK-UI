@@ -8,6 +8,16 @@
 #include <string.h>
 #include <unistd.h>
 
+typedef GtkWidget* UI;
+
+typedef struct {
+    int width;
+    int height;
+    bool center;
+    bool resizable;
+    int border;
+} WindowConfig;
+
 GtkWidget* UICreateWindow(const char* title, const WindowConfig cfg);
 void UILoadCSS(const char* filename);
 void UILoadCSSData(const char* data);

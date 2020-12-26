@@ -1,15 +1,5 @@
 #include <gtkui.h>
 
-typedef struct {
-    int width;
-    int height;
-    bool center;
-    bool resizable;
-    int border;
-} WindowConfig;
-
-typedef GtkWidget* UI;
-
 GtkWidget* UICreateWindow(const char* title, const WindowConfig cfg) {
     GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(window), title);
