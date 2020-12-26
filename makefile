@@ -22,3 +22,8 @@ install:
 	install -m 644 build/gtkui.h $(PREFIX)/include/gtkui.h
 	install -m 644 build/libgtkui.so $(PREFIX)/lib/libgtkui.so
 	install -m 644 build/gtkui.pc $(PREFIX)/lib/pkgconfig/gtkui.pc
+
+uninstall:
+	rm $(PREFIX)/include/gtkui.h
+	rm $(PREFIX)/lib/libgtkui.so
+	rm $(PREFIX)/lib/pkgconfig/gtkui.pc
