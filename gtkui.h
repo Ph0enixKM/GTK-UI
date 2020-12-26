@@ -45,7 +45,7 @@ UI UICreateHBox(void);
 UI UICreateVBox(void);
 void UISetBoxSpacing(UI box, int spacing);
 // Button
-UI UICreateButton(const char* title, void* action);
+UI UICreateButton(const char* title);
 // Label
 UI UICreateLabel(const char* text);
 // Entry
