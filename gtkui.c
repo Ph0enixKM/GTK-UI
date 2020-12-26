@@ -1,4 +1,4 @@
-#include <gtkui.h>
+#include "gtkui.h"
 
 UI UICreateWindow(const char* title, const WindowConfig cfg) {
     UI window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
