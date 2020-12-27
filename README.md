@@ -162,12 +162,15 @@ UIAppend(window, img);
 ```c
 UI grid = UICreateGrid(true); // Homogeneous?
 UIAppend(window, grid);
+// You can set spacing of the grid
+UISetGridColumnSpacing(grid, 15);
+UISetGridRowSpacing(grid, 10);
 // Let's add an image to our grid
 UIAttach(grid, img, 0, 0, 1, 1);
 // Numerical values indicate x, y, width, height
 ```
 
-- ### Creating a entry
+- ### Creating an entry
 
 ```c
 UI entry = UICreateEntry("placeholder");
@@ -179,6 +182,17 @@ const char* value = UIGetEntryValue(entry);
 // length in characters of the values
 unsigned length = UIEntryLength(entry);
 ```
+
+- ### Creating a slider
+
+```c
+UI slider = UICreateSlider(1, 10, 1); // min, max, step
+UIAppend(window, slider);
+// Setting and getting values
+UISetSliderValue(entry, 7);
+double value = UIGetSliderValue(entry);
+```
+
 
 - ### Attaching event callbacks
 

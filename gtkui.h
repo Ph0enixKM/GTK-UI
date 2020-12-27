@@ -40,7 +40,7 @@ GdkPixbuf* UILoadImageData(const char* filename);
 UI UILoadImage(GdkPixbuf* pixelbuffer);
 // Grid
 UI UICreateGrid(bool homogeneous);
-void UISetRowColumnSpacing(UI grid, int size);
+void UISetGridRowSpacing(UI grid, int size);
 void UISetGridColumnSpacing(UI grid, int size);
 void UIAttach(UI grid, UI child, int x, int y, int width, int height);
 // Box
