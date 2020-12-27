@@ -70,9 +70,21 @@ void UILoadCSSData(const char* data) {
     g_object_unref(provider);
 }
 
-void UIAppend(UI parent, UI current) {
-    gtk_container_add(GTK_CONTAINER(parent), current);
-    gtk_widget_show(current);
+void UIAppend(UI parent, UI child) {
+    gtk_container_add(GTK_CONTAINER(parent), child);
+    gtk_widget_show(child);
+}
+
+void UIRemove(UI parent, UI child) {
+    gtk_container_remove(GTK_CONTAINER(parent), child);
+}
+
+void UIShow(UI widget) {
+    gtk_widget_show(widget);
+}
+
+void UIHide(UI widget) {
+    gtk_widget_hide(widget);
 }
 
 void UISetID(UI widget, const char* name) {
@@ -120,6 +132,14 @@ void UISetGridRowSpacing(UI grid, int size) {
 
 void UISetGridColumnSpacing(UI grid, int size) {
     gtk_grid_set_column_spacing(GTK_GRID(grid), size);
+}
+
+void UIGridRemoveRow(UI grid, int position) {
+    gtk_grid_remove_row(GTK_GRID(grid), position);
+}
+
+void UIGridRemoveColumn(UI grid, int position) {
+    gtk_grid_remove_column(GTK_GRID(grid), position);
 }
 
 void UIAttach(UI grid, UI child, int x, int y, int width, int height) {
@@ -180,6 +200,12 @@ double UIGetSliderValue(UI slider) {
 
 void UISetSliderValue(UI slider, double value) {
     gtk_range_set_value(GTK_RANGE(slider), value);
+}
+
+UI UICreateScrollView(bool scrollx, bool scrolly) {
+    UI sv = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sv), (scrollx ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER), (scrolly ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER));
+    return sv;
 }
 
 void UIError(const char* message) {

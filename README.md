@@ -83,7 +83,6 @@ gcc `pkg-config --cflags gtkui` main.c `pkg-config --libs gtkui`
 The first step of learning how GTK-UI works is to create a Hello World program. As you can see it looks pretty much similar to the vanilla GTK version.
 
 ```c
-#include <gtk/gtk.h>
 #include <gtkui.h>
 
 int main(int argc, char* argv[]) {
@@ -125,6 +124,11 @@ UI window = UIWindow("Title", .width = 1020, .height = 720, .exit = true);
 ```c
 UI label = UICreateLabel("Some text here");
 UIAppend(window, label);
+// Optionally we can also use
+UIRemove(window, label);
+// We can show and hide elements as well
+UIHide(label);
+UIShow(label);
 ```
 
 - ### Creating a button
@@ -193,6 +197,14 @@ UISetSliderValue(entry, 7);
 double value = UIGetSliderValue(entry);
 ```
 
+- ### Creating a scroll view
+
+```c
+UI scroll = UICreateScrollView(false, true); // scrollx, scrolly
+UIAppend(window, scroll);
+```
+Scroll view is a widget that can take up to one element at a time. 
+It is recommended to use a box or grid in order to store all the elements in the view.
 
 - ### Attaching event callbacks
 
