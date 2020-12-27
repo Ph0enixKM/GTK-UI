@@ -19,6 +19,12 @@ typedef struct {
     bool exit;
 } WindowConfig;
 
+enum Overflow {
+    UI_AUTO,
+    UI_SCROLL,
+    UI_HIDDEN
+};
+
 // Event Creation
 #define UIEvent(instance, signal, handler, data) g_signal_connect(G_OBJECT(instance), (signal), G_CALLBACK(handler), data)
 // Window
@@ -28,7 +34,10 @@ UI UICreateWindow(const char* title, const WindowConfig cfg);
 void UILoadCSS(const char* filename);
 void UILoadCSSData(const char* data);
 // Append
-void UIAppend(UI parent, UI current);
+void UIAppend(UI parent, UI child);
+void UIRemove(UI parent, UI child);
+void UIShow(UI widget);
+void UIHide(UI widget);
 // ID and classes
 void UISetID(UI widget, const char* name);
 void UIAddClass(UI widget, const char* name);
@@ -43,6 +52,8 @@ UI UICreateGrid(bool homogeneous);
 void UISetGridRowSpacing(UI grid, int size);
 void UISetGridColumnSpacing(UI grid, int size);
 void UIAttach(UI grid, UI child, int x, int y, int width, int height);
+void UIGridRemoveRow(UI grid, int position);
+void UIGridRemoveColumn(UI grid, int position);
 // Box
 UI UICreateHBox(void);
 UI UICreateVBox(void);
@@ -61,6 +72,8 @@ UI UICreateEntry(const char* placeholder);
 const char* UIGetEntryValue(UI entry);
 unsigned UIGetEntryLength(UI entry);
 void UISetEntryValue(UI entry, const char* text);
+// Scroll View
+UI UICreateScrollView(bool scrollx, bool scrolly);
 // Message Box
 void UIError(const char* message);
 void UIWarning(const char* message);
