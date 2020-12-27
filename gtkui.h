@@ -23,6 +23,7 @@ typedef struct {
 #define UIEvent(instance, signal, handler, data) g_signal_connect(G_OBJECT(instance), (signal), G_CALLBACK(handler), data)
 // Window
 UI UICreateWindow(const char* title, const WindowConfig cfg);
+#define UIWindow(title, ...) UICreateWindow(title, (WindowConfig){__VA_ARGS__});
 // CSS
 void UILoadCSS(const char* filename);
 void UILoadCSSData(const char* data);
