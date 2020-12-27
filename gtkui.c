@@ -114,8 +114,17 @@ UI UICreateGrid(bool homogeneous) {
     return grid;
 }
 
+void UISetGridRowSpacing(UI grid, int size) {
+    gtk_grid_set_row_spacing(GTK_GRID(grid), size);
+}
+
+void UISetGridColumnSpacing(UI grid, int size) {
+    gtk_grid_set_column_spacing(GTK_GRID(grid), size);
+}
+
 void UIAttach(UI grid, UI child, int x, int y, int width, int height) {
     gtk_grid_attach(GTK_GRID(grid), child, x, y, width, height);
+    gtk_widget_show(child);
 }
 
 UI UICreateHBox(void) {
@@ -155,6 +164,22 @@ unsigned UIGetEntryLength(UI entry) {
 
 void UISetEntryValue(UI entry, const char* text) {
     gtk_entry_set_text(GTK_ENTRY(entry), text);
+}
+
+UI UICreateVSlider(double min, double max, double step) {
+    return gtk_scale_new_with_range(GTK_ORIENTATION_VERTICAL, min, max, step);
+}
+
+UI UICreateHSlider(double min, double max, double step) {
+    return gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, min, max, step);
+}
+
+double UIGetSliderValue(UI slider) {
+    return gtk_range_get_value(GTK_RANGE(slider));
+}
+
+void UISetSliderValue(UI slider, double value) {
+    gtk_range_set_value(GTK_RANGE(slider), value);
 }
 
 void UIError(const char* message) {

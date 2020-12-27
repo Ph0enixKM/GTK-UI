@@ -39,6 +39,8 @@ GdkPixbuf* UILoadImageData(const char* filename);
 UI UILoadImage(GdkPixbuf* pixelbuffer);
 // Grid
 UI UICreateGrid(bool homogeneous);
+void UISetRowColumnSpacing(UI grid, int size);
+void UISetGridColumnSpacing(UI grid, int size);
 void UIAttach(UI grid, UI child, int x, int y, int width, int height);
 // Box
 UI UICreateHBox(void);
@@ -48,6 +50,11 @@ void UISetBoxSpacing(UI box, int spacing);
 UI UICreateButton(const char* title);
 // Label
 UI UICreateLabel(const char* text);
+// Slider
+UI UICreateVSlider(double min, double max, double step);
+UI UICreateHSlider(double min, double max, double step);
+double UIGetSliderValue(UI slider);
+void UISetSliderValue(UI slider, double value);
 // Entry
 UI UICreateEntry(const char* placeholder);
 const char* UIGetEntryValue(UI entry);
