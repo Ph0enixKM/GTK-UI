@@ -19,6 +19,7 @@
     * [Creating a label](#Creating-a-label)
     * [Creating a button](#Creating-a-button)
     * [Creating a box](#Creating-a-box)
+    * [Creating a stack](#Creating-a-stack)
     * [Creating an image](#Creating-an-image)
     * [Creating a grid](#Creating-a-grid)
     * [Attaching event callbacks](#Attaching-event-callbacks)
@@ -145,6 +146,30 @@ UI boxh = UICreateVBox(); // Horizontal box
 UI boxv = UICreateHBox(); // Vertical box
 // Set spacing of a box
 UISetBoxSpacing(boxh, 10);
+```
+
+- ### Creating a stack
+
+Without switcher:
+
+```c
+UI stack = UICreateStack();
+UI label1 = UICreateLabel("item one");
+UI label2 = UICreateLabel("item one");
+UIStackAdd(stack, label1, "first");
+UIStackAdd(stack, label2, "second");
+UIStackVisibleName("second");
+```
+
+With switcher:
+
+```c
+UI stack = UICreateStack();
+UI switcher = UICreateStackSwitcher(stack);
+UI label1 = UICreateLabel("item one");
+UI label2 = UICreateLabel("item one");
+UIStackAddTitled(stack, label1, "first", "First tab");
+UIStackAddTitled(stack, label2, "second", "Second tab");
 ```
 
 - ### Creating an image

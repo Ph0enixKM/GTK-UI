@@ -159,6 +159,38 @@ void UISetBoxSpacing(UI box, int spacing) {
     gtk_box_set_spacing(GTK_BOX(box), spacing);
 }
 
+UI UICreateStack() {
+    return gtk_stack_new();
+}
+
+UI UICreateStackSwitcher(UI stack) {
+    UI switcher = gtk_stack_switcher_new();
+    if (stack) {
+        UIStackSwitcherSetStack(switcher, stack);
+    }
+    return switcher;
+}
+
+void UIStackSwitcherSetStack(UI switcher, UI stack) {
+    gtk_stack_switcher_set_stack(GTK_STACK_SWITCHER(switcher), GTK_STACK(stack));
+}
+
+void UIStackAdd(UI stack, UI widget, const char * name) {
+    gtk_stack_add_named(GTK_STACK(stack), widget, name);
+}
+
+void UIStackAddTitled(UI stack, UI widget, const char * name, const char * title) {
+    gtk_stack_add_titled(GTK_STACK(stack), widget, name, title);
+}
+
+void UIStackVisibleName(UI stack, const char * name) {
+    gtk_stack_set_visible_child_name(GTK_STACK(stack), name);
+}
+
+void UIStackVisibleChild(UI stack, UI widget) {
+    gtk_stack_set_visible_child(GTK_STACK(stack), widget);
+}
+
 UI UICreateButton(const char* title) {
     UI button = gtk_button_new_with_mnemonic(title);
     return button;

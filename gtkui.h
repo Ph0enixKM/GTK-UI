@@ -58,6 +58,14 @@ void UIGridRemoveColumn(UI grid, int position);
 UI UICreateHBox(void);
 UI UICreateVBox(void);
 void UISetBoxSpacing(UI box, int spacing);
+// Stack
+UI UICreateStack();
+UI UICreateStackSwitcher(UI stack);
+void UIStackSwitcherSetStack(UI switcher, UI stack);
+void UIStackAdd(UI stack, UI widget, const char * name);
+void UIStackAddTitled(UI stack, UI widget, const char * name, const char * title);
+void UIStackVisibleName(UI stack, const char * name);
+void UIStackVisibleChild(UI stack, UI widget);
 // Button
 UI UICreateButton(const char* title);
 // Label
