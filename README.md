@@ -150,27 +150,27 @@ UISetBoxSpacing(boxh, 10);
 
 - ### Creating a stack
 
-Without switcher:
+    - Without switcher:
 
-```c
-UI stack = UICreateStack();
-UI label1 = UICreateLabel("item one");
-UI label2 = UICreateLabel("item one");
-UIStackAdd(stack, label1, "first");
-UIStackAdd(stack, label2, "second");
-UIStackVisibleName("second");
-```
+    ```c
+    UI stack = UICreateStack();
+    UI label1 = UICreateLabel("item one");
+    UI label2 = UICreateLabel("item one");
+    UIStackAdd(stack, label1, "first");
+    UIStackAdd(stack, label2, "second");
+    UIStackVisibleName(stack, "second");
+    ```
 
-With switcher:
+    - With switcher:
 
-```c
-UI stack = UICreateStack();
-UI switcher = UICreateStackSwitcher(stack);
-UI label1 = UICreateLabel("item one");
-UI label2 = UICreateLabel("item one");
-UIStackAddTitled(stack, label1, "first", "First tab");
-UIStackAddTitled(stack, label2, "second", "Second tab");
-```
+    ```c
+    UI stack = UICreateStack();
+    UI switcher = UICreateStackSwitcher(stack);
+    UI label1 = UICreateLabel("item one");
+    UI label2 = UICreateLabel("item one");
+    UIStackAddTitled(stack, label1, "first", "First tab");
+    UIStackAddTitled(stack, label2, "second", "Second tab");
+    ```
 
 - ### Creating an image
 
