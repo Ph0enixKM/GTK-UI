@@ -175,15 +175,16 @@ void UIStackSwitcherSetStack(UI switcher, UI stack) {
     gtk_stack_switcher_set_stack(GTK_STACK_SWITCHER(switcher), GTK_STACK(stack));
 }
 
-void UIStackAdd(UI stack, UI widget, const char * name) {
+void UIStackAdd(UI stack, UI widget, const char* name) {
     gtk_stack_add_named(GTK_STACK(stack), widget, name);
+    gtk_widget_show(widget);
 }
 
-void UIStackAddTitled(UI stack, UI widget, const char * name, const char * title) {
+void UIStackAddTitled(UI stack, UI widget, const char* name, const char* title) {
     gtk_stack_add_titled(GTK_STACK(stack), widget, name, title);
 }
 
-void UIStackVisibleName(UI stack, const char * name) {
+void UIStackVisibleName(UI stack, const char* name) {
     gtk_stack_set_visible_child_name(GTK_STACK(stack), name);
 }
 
