@@ -84,7 +84,7 @@ void UISetEntryValue(UI entry, const char* text);
 UI UICreateScrollView(bool scrollx, bool scrolly);
 // Message Box
 void UIError(const char* message);
-void UIWarning(const char* message);
+bool UIWarning(const char* message);
 void UIPrint(const char* message);
 
 #endif
