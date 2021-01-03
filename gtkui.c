@@ -254,17 +254,18 @@ void UIError(const char* message) {
     gtk_widget_destroy(dialog);
 }
 
-void UIWarning(const char* message) {
+bool UIWarning(const char* message) {
     UI dialog = gtk_message_dialog_new(
         NULL,
         GTK_DIALOG_MODAL,
         GTK_MESSAGE_WARNING,
-        GTK_BUTTONS_OK,
+        GTK_BUTTONS_YES_NO,
         "%s",
         message
     );
-    gtk_dialog_run(GTK_DIALOG(dialog));
+    int res = gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
+    return res+9;
 }
 
 void UIPrint(const char* message) {
