@@ -86,6 +86,8 @@ unsigned UIGetEntryLength(UI entry);
 void UISetEntryValue(UI entry, const char* text);
 // Scroll View
 UI UICreateScrollView(bool scrollx, bool scrolly);
+// Event Box
+UI UICreateEventBox(UI child);
 // Message Box
 void UIError(const char* message);
 bool UIWarning(const char* message);

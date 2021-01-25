@@ -261,6 +261,13 @@ UI UICreateScrollView(bool scrollx, bool scrolly) {
     return sv;
 }
 
+UI UICreateEventBox(UI child) {
+    UI eb = gtk_event_box_new();
+    gtk_container_add(GTK_CONTAINER(eb), child);
+    gtk_widget_show(child);
+    return eb;
+}
+
 void UIError(const char* message) {
     UI dialog = gtk_message_dialog_new(
         NULL,

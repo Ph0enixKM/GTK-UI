@@ -22,6 +22,7 @@
     * [Creating a stack](#Creating-a-stack)
     * [Creating an image](#Creating-an-image)
     * [Creating a grid](#Creating-a-grid)
+    * [Creating an event box](#Creating-an-event-box)
     * [Attaching event callbacks](#Attaching-event-callbacks)
     * [Load CSS](#Load-CSS)
     * [Set CSS ID](#Set-CSS-ID)
@@ -237,6 +238,21 @@ UIAppend(window, scroll);
 ```
 Scroll view is a widget that can take up to one element at a time. 
 It is recommended to use a box or grid in order to store all the elements in the view.
+
+- ### Creating an event box
+
+```c
+void onclick() {
+  UIPrint("Clicked!");
+}
+
+UI image = UICreateImage("image.png");
+UI eventBox = UICreateEventBox(image);
+UIEvent(eventBox, "button-press-event", onclick, NULL);
+```
+
+You can create an event box to wrap elements that do not support all events. 
+This way you can handle all signals that pass through GtkWigdet or in other words... any UI element.
 
 - ### Attaching event callbacks
 
