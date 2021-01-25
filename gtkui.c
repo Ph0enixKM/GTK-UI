@@ -119,6 +119,14 @@ UI UILoadImage(GdkPixbuf* pixelbuffer) {
     return gtk_image_new_from_pixbuf(pixelbuffer);
 }
 
+void UISetImageLoaded(UI image, GdkPixbuf*pixelbuffer) {
+    gtk_image_set_from_pixbuf(GTK_IMAGE(image), pixelbuffer);
+}
+
+void UISetImage(UI image, const char* filename) {
+    gtk_image_set_from_file(GTK_IMAGE(image), filename);
+}
+
 UI UICreateGrid(bool homogeneous) {
     UI grid = gtk_grid_new();
     gtk_grid_set_row_homogeneous(GTK_GRID(grid), homogeneous);
@@ -147,12 +155,16 @@ void UIAttach(UI grid, UI child, int x, int y, int width, int height) {
     gtk_widget_show(child);
 }
 
-UI UICreateHBox(void) {
-    return gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+UI UICreateHBox(bool homogeneous) {
+    UI box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+    gtk_box_set_homogeneous(GTK_BOX(box), homogeneous);
+    return box;
 }
 
-UI UICreateVBox(void) {
-    return gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+UI UICreateVBox(bool homogeneous) {
+    UI box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+    gtk_box_set_homogeneous(GTK_BOX(box), homogeneous);
+    return box;
 }
 
 void UISetBoxSpacing(UI box, int spacing) {
@@ -199,6 +211,14 @@ UI UICreateButton(const char* title) {
 
 UI UICreateLabel(const char* text) {
     return gtk_label_new(text);
+}
+
+void UISetLabelText(UI label, const char* text) {
+    gtk_label_set_text(GTK_LABEL(label), text);
+}
+
+const char* UIGetLabelText(UI label) {
+    return gtk_label_get_text(GTK_LABEL(label));
 }
 
 UI UICreateEntry(const char* placeholder) {

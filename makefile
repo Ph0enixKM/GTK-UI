@@ -40,4 +40,4 @@ build_deb:
 	cp build/libgtkui.so $(DEB_PATH)/usr/lib/libgtkui.so
 	cp build/gtkui.pc $(DEB_PATH)/usr/lib/pkgconfig/gtkui.pc
 	dpkg-deb --build $(DEB_PATH) build
-	mv $(DEB_PATH)_any.deb $(DEB_PATH).deb
+	mv $(DEB_PATH)_all.deb $(DEB_PATH).deb
