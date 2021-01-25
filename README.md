@@ -32,7 +32,7 @@
 ## Instalation
 
 ### Manual
-Just grap `gtkui.h` and `gtkui.c` files and put them in your project.
+Just grab `gtkui.h` and `gtkui.c` files and put them in your project.
 Include in the following way:
 
 ```c
