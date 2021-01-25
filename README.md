@@ -130,6 +130,10 @@ UIRemove(window, label);
 // We can show and hide elements as well
 UIHide(label);
 UIShow(label);
+// Set and get text of a label
+UISetLabelText(label, "New text");
+char* text = UIGetLabelText(label);
+
 ```
 
 - ### Creating a button
@@ -142,8 +146,8 @@ UIAppend(window, button);
 - ### Creating a box
 
 ```c
-UI boxh = UICreateVBox(); // Horizontal box
-UI boxv = UICreateHBox(); // Vertical box
+UI boxh = UICreateVBox(true); // Horizontal box with homogeneous attribute
+UI boxv = UICreateHBox(false); // Vertical box without homogeneous attribute
 // Set spacing of a box
 UISetBoxSpacing(boxh, 10);
 ```
@@ -184,6 +188,9 @@ You can also load up image file and then reuse it's data for later usage. This w
 GdkPixbuf* imgData = UILoadImageData("path/to/image.png");
 UI img = UILoadImage(imgData);
 UIAppend(window, img);
+
+UISetImageLoaded(img, imgData);
+UISetImage(img, "some_file.png");
 ```
 
 - ### Creating a grid

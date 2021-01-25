@@ -47,6 +47,8 @@ void UIRemoveClass(UI widget, const char* name);
 UI UICreateImage(const char* filename);
 GdkPixbuf* UILoadImageData(const char* filename);
 UI UILoadImage(GdkPixbuf* pixelbuffer);
+void UISetImageLoaded(UI image, GdkPixbuf* pixelbuffer);
+void UISetImage(UI image, const char* filename);
 // Grid
 UI UICreateGrid(bool homogeneous);
 void UISetGridRowSpacing(UI grid, int size);
@@ -55,8 +57,8 @@ void UIAttach(UI grid, UI child, int x, int y, int width, int height);
 void UIGridRemoveRow(UI grid, int position);
 void UIGridRemoveColumn(UI grid, int position);
 // Box
-UI UICreateHBox(void);
-UI UICreateVBox(void);
+UI UICreateHBox(bool homogeneous);
+UI UICreateVBox(bool homogeneous);
 void UISetBoxSpacing(UI box, int spacing);
 // Stack
 UI UICreateStack();
@@ -70,6 +72,8 @@ void UIStackVisibleChild(UI stack, UI widget);
 UI UICreateButton(const char* title);
 // Label
 UI UICreateLabel(const char* text);
+void UISetLabelText(UI label, const char* text);
+const char* UIGetLabelText(UI label);
 // Slider
 UI UICreateVSlider(double min, double max, double step);
 UI UICreateHSlider(double min, double max, double step);
